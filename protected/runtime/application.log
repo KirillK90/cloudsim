@@ -1,0 +1,68 @@
+2015/01/05 11:08:14 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchAll(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ccp.users' doesn't exist. Выполнявшийся SQL-запрос: SHOW FULL COLUMNS FROM `users`.
+2015/01/05 11:08:14 [error] [exception.CDbException] exception 'CDbException' with message 'Таблица "users", упомянутая в записи active record класса "Users", не найдена в базе данных.' in /home/omega/vhosts/ccp/yii/db/ar/CActiveRecord.php:2362
+Stack trace:
+#0 /home/omega/vhosts/ccp/yii/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Users))
+#1 /home/omega/vhosts/ccp/yii/db/ar/CActiveRecord.php(658): CActiveRecord->getMetaData()
+#2 /home/omega/vhosts/ccp/yii/db/ar/CActiveRecord.php(1625): CActiveRecord->getTableSchema()
+#3 /home/omega/vhosts/ccp/protected/commands/ServiceCommand.php(27): CActiveRecord->countByAttributes(Array)
+#4 [internal function]: ServiceCommand->actionLoadUsers()
+#5 /home/omega/vhosts/ccp/yii/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(ServiceCommand), Array)
+#6 /home/omega/vhosts/ccp/yii/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#7 /home/omega/vhosts/ccp/yii/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#8 /home/omega/vhosts/ccp/yii/base/CApplication.php(180): CConsoleApplication->processRequest()
+#9 /home/omega/vhosts/ccp/yii/yiic.php(33): CApplication->run()
+#10 /home/omega/vhosts/ccp/protected/yiic.php(8): require_once('/home/omega/vho...')
+#11 /home/omega/vhosts/ccp/protected/yiic(4): require_once('/home/omega/vho...')
+#12 {main}
+---
+2015/01/05 11:08:22 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchAll(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ccp.tbl_migration' doesn't exist. Выполнявшийся SQL-запрос: SHOW FULL COLUMNS FROM `tbl_migration`.
+2015/01/05 11:11:37 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchAll(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ccp.tbl_migration' doesn't exist. Выполнявшийся SQL-запрос: SHOW FULL COLUMNS FROM `tbl_migration`.
+2015/01/05 17:51:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "widget/index".' in /home/omega/vhosts/cloudsim/yii/web/CWebApplication.php:286
+Stack trace:
+#0 /home/omega/vhosts/cloudsim/yii/web/CWebApplication.php(141): CWebApplication->runController('')
+#1 /home/omega/vhosts/cloudsim/yii/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/omega/vhosts/cloudsim/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/
+---
+2015/01/05 17:51:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "admin".' in /home/omega/vhosts/cloudsim/yii/web/CWebApplication.php:286
+Stack trace:
+#0 /home/omega/vhosts/cloudsim/yii/web/CWebApplication.php(141): CWebApplication->runController('')
+#1 /home/omega/vhosts/cloudsim/yii/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/omega/vhosts/cloudsim/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/
+---
+2015/01/05 17:52:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "index".' in /home/omega/vhosts/cloudsim/yii/web/CController.php:483
+Stack trace:
+#0 /home/omega/vhosts/cloudsim/yii/web/CController.php(270): CController->missingAction('')
+#1 /home/omega/vhosts/cloudsim/yii/web/CWebApplication.php(282): CController->run('')
+#2 /home/omega/vhosts/cloudsim/yii/web/CWebApplication.php(141): CWebApplication->runController('admin/profile')
+#3 /home/omega/vhosts/cloudsim/yii/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/omega/vhosts/cloudsim/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/admin/profile/
+HTTP_REFERER=http://cloudsim.dev/admin/site/login/
+---
+2015/01/05 18:16:39 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchAll(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'cloudsim.tbl_migration' doesn't exist. Выполнявшийся SQL-запрос: SHOW FULL COLUMNS FROM `tbl_migration`.
+2015/01/05 18:17:32 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Суицид - это не выход.' in /home/omega/vhosts/cloudsim/protected/modules/admin/controllers/UsersController.php:98
+Stack trace:
+#0 [internal function]: UsersController->actionDelete('1')
+#1 /home/omega/vhosts/cloudsim/yii/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#2 /home/omega/vhosts/cloudsim/yii/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UsersController), Object(ReflectionMethod), Array)
+#3 /home/omega/vhosts/cloudsim/yii/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/omega/vhosts/cloudsim/yii/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /home/omega/vhosts/cloudsim/yii/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /home/omega/vhosts/cloudsim/yii/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /home/omega/vhosts/cloudsim/yii/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /home/omega/vhosts/cloudsim/yii/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /home/omega/vhosts/cloudsim/yii/web/CController.php(291): CFilterChain->run()
+#10 /home/omega/vhosts/cloudsim/yii/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /home/omega/vhosts/cloudsim/yii/web/CWebApplication.php(282): CController->run('delete')
+#12 /home/omega/vhosts/cloudsim/yii/web/CWebApplication.php(141): CWebApplication->runController('admin/users/del...')
+#13 /home/omega/vhosts/cloudsim/yii/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /home/omega/vhosts/cloudsim/index.php(16): CApplication->run()
+#15 {main}
+REQUEST_URI=/admin/users/delete/id/1/?ajax=user-list
+HTTP_REFERER=http://cloudsim.dev/admin/users/
+---

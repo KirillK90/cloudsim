@@ -1,0 +1,31 @@
+.table td.centred, div.centred {
+    text-align: center;
+}
+
+.table tr.inactive, .table tr.inactive td{
+    background-color:#FCDAD8 !important;
+}
+.table tr.active, .table tr.active td {
+    background-color:#ffffff !important;
+}
+.table tr.row_light_green, .table tr.row_light_green td {
+    background: #D8F1D4 !important;
+}
+
+.info-row {
+    display: block;
+    padding-top: 5px;
+    color: #777777;
+}
+
+.alert-error, .alert-success {
+    font-weight: bold;
+}
+
+.url-link {
+    vertical-align: top;
+}
+
+#main-buttons {
+    margin: 10px 10px 30px;
+}

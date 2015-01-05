@@ -1,0 +1,16 @@
+AddDefaultCharset utf-8
+Options -Indexes
+DirectoryIndex index.php
+
+# Error pages will not work for dev env
+ErrorDocument 403 /error?code=403
+ErrorDocument 404 /error?code=404
+ErrorDocument 500 /error?code=500
+ErrorDocument 502 /error?code=502
+ErrorDocument 504 /error?code=504
+
+RewriteEngine on
+RewriteCond $1 !^(index\.php|assets|st|upload|robots\.txt|favicon\.ico)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L,QSA]
