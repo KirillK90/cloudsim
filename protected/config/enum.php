@@ -46,12 +46,14 @@ class UserAccessTypes extends Enum
 class UserRole extends Enum
 {
     const ADMIN = 'admin';
+    const USER = 'user';
     const GUEST = 'guest';
 
     static function getList()
     {
         return array(
-            self::ADMIN => 'Админ'
+            self::ADMIN => 'Админ',
+            self::USER => 'Пользователь'
         );
     }
 }

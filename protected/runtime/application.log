@@ -82,3 +82,13 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/favicon.ico
 ---
+2015/03/29 12:15:22 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchAll(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'cloudsim.tbl_migration' doesn't exist. Выполнявшийся SQL-запрос: SHOW FULL COLUMNS FROM `tbl_migration`.
+2015/03/29 12:21:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in /home/evgeny/vhosts/cloudsim/yii/web/CWebApplication.php:286
+Stack trace:
+#0 /home/evgeny/vhosts/cloudsim/yii/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /home/evgeny/vhosts/cloudsim/yii/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/evgeny/vhosts/cloudsim/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/03/29 12:25:05 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchAll(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'cloudsim.tbl_migration' doesn't exist. Выполнявшийся SQL-запрос: SHOW FULL COLUMNS FROM `tbl_migration`.

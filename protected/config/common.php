@@ -5,7 +5,7 @@ Yii::setPathOfAlias('widgets', dirname(__FILE__).'/../widgets');
 
 return array(
     'basePath'=>__DIR__.DIRECTORY_SEPARATOR.'..',
-    'name' => 'Polygant yii',
+    'name' => 'Облачный симулятор',
 
     'language' => 'ru',
     'aliases' => array(
