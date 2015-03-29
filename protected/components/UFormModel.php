@@ -12,14 +12,22 @@ class UFormModel extends CFormModel
 	 *
 	 * @return array() $_POST[formName]
 	 */
-
-
 	public function getFormData($paramName="")
 	{
 		$post = Yii::app()->request->getPost(get_class($this));
 		return $paramName == "" ? $post : $post[$paramName];
 	}
-	
+
+    /**
+     * Возвращает массив $_GET[formName]
+     * @return array() $_GET[formName]
+     */
+    public function getQueryData($paramName="")
+    {
+        $get = Yii::app()->request->getQuery(get_class($this));
+        return $paramName == "" ? $get : $get[$paramName];
+    }
+
 	/**
 	 * Выводит ошибки валидации в формате JSON
 	 * @return string the JSON representation of the validation error messages.

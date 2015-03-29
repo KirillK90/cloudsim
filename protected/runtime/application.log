@@ -66,3 +66,19 @@ Stack trace:
 REQUEST_URI=/admin/users/delete/id/1/?ajax=user-list
 HTTP_REFERER=http://cloudsim.dev/admin/users/
 ---
+2015/03/29 11:10:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in /home/omega/vhosts/cloudsim/yii/web/CWebApplication.php:286
+Stack trace:
+#0 /home/omega/vhosts/cloudsim/yii/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /home/omega/vhosts/cloudsim/yii/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/omega/vhosts/cloudsim/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/03/29 11:10:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in /home/omega/vhosts/cloudsim/yii/web/CWebApplication.php:286
+Stack trace:
+#0 /home/omega/vhosts/cloudsim/yii/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /home/omega/vhosts/cloudsim/yii/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/omega/vhosts/cloudsim/index.php(16): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---

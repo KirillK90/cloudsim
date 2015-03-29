@@ -1,9 +1,11 @@
 <?php
 $_SERVER['HTTPS'] = isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https';
 
+Yii::setPathOfAlias('widgets', dirname(__FILE__).'/../widgets');
+
 return array(
     'basePath'=>__DIR__.DIRECTORY_SEPARATOR.'..',
-    'name' => 'Облачный симулятор',
+    'name' => 'Polygant yii',
 
     'language' => 'ru',
     'aliases' => array(
@@ -52,9 +54,13 @@ return array(
 
         'urlManager'=>array(
             'urlFormat'=>'path',
-            'urlSuffix'=>'/',
+            'urlSuffix'=>'.html',
             'showScriptName'=>false,
             'rules'=> (require_once __DIR__.'/rules.php'),
+        ),
+
+        'cache'=>array(
+            'class'=>'system.caching.CFileCache',
         ),
     ),
 

@@ -45,29 +45,13 @@ class UserAccessTypes extends Enum
 
 class UserRole extends Enum
 {
-    const JURIST = 'jurist';
     const ADMIN = 'admin';
     const GUEST = 'guest';
 
     static function getList()
     {
         return array(
-            self::JURIST => 'Юрист',
             self::ADMIN => 'Админ'
-        );
-    }
-}
-
-class SectionType extends Enum
-{
-    const PRIMARY = 'primary';
-    const NESTED = 'nested';
-
-    static function getList()
-    {
-        return array(
-            self::PRIMARY => 'Основной',
-            self::NESTED => 'Вложенный',
         );
     }
 }

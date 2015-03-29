@@ -12,14 +12,20 @@ class ServiceCommand extends UConsoleCommand
         echo $this->getHelp();
     }
 
-    public function actionLoadUsers()
+    public function actionLoadUsers($init=false)
     {
+        if ($init) {
+            $cnt = Users::model()->deleteAll();
+            $this->profile("$cnt users deleted");
+        }
+
         $filePath = DATA_PATH.'users.csv';
         $lines = file($filePath);
         $n = 0;
         foreach ($lines as $line) {
             $line = trim($line);
             if (!$line) continue;
+            $this->delimeter();
             $parts = explode(';', $line);
             $this->log($parts[0]);
 
