@@ -139,6 +139,7 @@ class UsersController extends UController
 		Yii::app()->controller->redirect(Yii::app()->homeUrl);
 	}
 
+
 	/**
 	 * @param integer $loginUserId
 	 * @param mixed $virtualModeOwner - id of owner or false
@@ -165,18 +166,4 @@ class UsersController extends UController
 		return false;
 
 	}
-
-
-    /**
-     * Performs the AJAX validation.
-     * @param Users $model the model to be validated
-     */
-    protected function performAjaxValidation($model)
-    {
-        if(isset($_POST['ajax']) && $_POST['ajax']==='users-form')
-        {
-            echo CActiveForm::validate($model);
-            Yii::app()->end();
-        }
-    }
 }

@@ -4,7 +4,7 @@
  * @var $model LoginForm
  */
 
-$this->pageTitle = 'Вход';
+$this->pageTitle = 'Регистрация';
 
 $this->widget('TbAlert');
 
@@ -14,17 +14,13 @@ $form = $this->beginWidget(BS_ActiveForm, array(
     'enableAjaxValidation' => true,
     'enableClientValidation' => true,
 ));
-
+echo $form->textFieldControlGroup($model, 'name');
 echo $form->textFieldControlGroup($model, 'email');
 echo $form->passwordFieldControlGroup($model, 'password');
+echo $form->passwordFieldControlGroup($model, 'password2');
+
 
 echo TbHtml::formActions(array(
-    TbHtml::submitButton('Войти', array('color' => TbHtml::BUTTON_COLOR_SUCCESS)),
-    TbHtml::linkButton('Регистрация', array('url' => '/site/registration', 'color' => TbHtml::BUTTON_COLOR_PRIMARY)),
+    TbHtml::submitButton('Регистрация', array('color' => TbHtml::BUTTON_COLOR_SUCCESS)),
 ));
 $this->endWidget();
-
-
-
-
-

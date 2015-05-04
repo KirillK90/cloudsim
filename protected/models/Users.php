@@ -10,6 +10,8 @@
  * @property string $name
  * @property string $password
  * @property string $role
+ * @property string $status
+ * @property string $activation_key
  */
 class Users extends UActiveRecord
 {
@@ -59,7 +61,6 @@ class Users extends UActiveRecord
 		if ($this->password != UserHelper::hash($this->oldPassword))
 			$this->addError('oldPassword','Текущий пароль указан неверно');
 	}
-
 	/**
 	 * @return array relational rules.
 	 */
@@ -96,6 +97,10 @@ class Users extends UActiveRecord
 
 		if ($this->isAttributeSafe('password'))
 			$this->password = UserHelper::hash($this->password);
+
+        if ($this->isNewRecord) {
+            $this->activation_key = md5(rand(1000000, 9999999));
+        }
 		return parent::beforeSave();
 	}
 
@@ -129,7 +134,9 @@ class Users extends UActiveRecord
 		));
 	}
 
-	/**
+
+
+    /**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.

@@ -12,6 +12,8 @@ class m141226_103928_create_users extends CDbMigration
 			'name' => 'varchar(32) NOT NULL',
 			'password' => 'varchar(32) NOT NULL',
 			'role' => 'varchar(32) NOT NULL',
+            'activation_key' => 'varchar(32) NOT NULL',
+            'status' => 'boolean NOT NULL DEFAULT false',
 		), 'engine=InnoDB');
 
 		$this->createIndex('users_email_idx','users','email', true);

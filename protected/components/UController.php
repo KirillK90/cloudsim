@@ -77,4 +77,17 @@ class UController extends CController
     {
         Yii::app()->user->setFlash($type, '<strong>'.$text.'</strong>');
     }
+
+    /**
+     * Performs the AJAX validation.
+     * @param Users $model the model to be validated
+     */
+    protected function performAjaxValidation($model)
+    {
+        if(isset($_POST['ajax']))
+        {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+    }
 }
