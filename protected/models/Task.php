@@ -1,48 +1,27 @@
 <?php
 
 /**
- * This is the model class for table "sections".
+ * This is the model class for table "task".
  *
- * The followings are the available columns in table 'sections':
+ * The followings are the available columns in table 'task':
  * @property integer $id
+ * @property integer $users_id
  * @property string $name
- * @property integer $active
  * @property string $type
- * @property string $description
- * @property string $color
- * @property integer $page_position
- * @property integer $menu_position
+ * @property integer $status
  * @property string $created
  *
- * Scopes
- * @method Sections active()
- * @method Sections menuOrdered()
- * @method Sections pageOrdered()
- *
+ * The followings are the available model relations:
+ * @property TaskData $data
  */
-class Sections extends UActiveRecord
+class Task extends UActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'sections';
-	}
-
-	public function scopes()
-	{
-		return array(
-			'active' => array(
-				'condition' => 'active = true'
-			),
-			'menuOrdered' => array(
-				'order' => 'menu_position asc'
-			),
-			'pageOrdered' => array(
-				'order' => 'page_position asc'
-			)
-		);
+		return 'task';
 	}
 
 	/**
@@ -53,13 +32,14 @@ class Sections extends UActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, type, description, color', 'required'),
-			array('active, page_position, menu_position', 'numerical', 'integerOnly'=>true),
-			array('name, type, color', 'length', 'max'=>255),
-			array('page_position, menu_position', 'default', 'value' => 0),
+			array('users_id, name, type', 'required'),
+			array('users_id', 'numerical', 'integerOnly'=>true),
+			array('name', 'length', 'max'=>32),
+			array('type', 'length', 'max'=>64),
+			array('status', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, active, type, description, color, page_position, menu_position, created', 'safe', 'on'=>'search'),
+			array('id, users_id, name, type, status, created', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,6 +51,7 @@ class Sections extends UActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'data' => array(self::HAS_ONE, 'TaskData', 'task_id'),
 		);
 	}
 
@@ -81,13 +62,10 @@ class Sections extends UActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'users_id' => 'Пользователь',
 			'name' => 'Название',
-			'active' => 'Активный',
 			'type' => 'Тип',
-			'description' => 'Краткое описание',
-			'color' => 'Цвет',
-			'page_position' => 'Page Position',
-			'menu_position' => 'Menu Position',
+			'status' => 'Статус',
 			'created' => 'Создан',
 		);
 	}
@@ -111,13 +89,10 @@ class Sections extends UActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('users_id',$this->users_id);
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('active',$this->active);
 		$criteria->compare('type',$this->type,true);
-		$criteria->compare('description',$this->description,true);
-		$criteria->compare('color',$this->color,true);
-		$criteria->compare('page_position',$this->page_position);
-		$criteria->compare('menu_position',$this->menu_position);
+		$criteria->compare('status',$this->status);
 		$criteria->compare('created',$this->created,true);
 
 		return new CActiveDataProvider($this, array(
@@ -125,24 +100,25 @@ class Sections extends UActiveRecord
 		));
 	}
 
-	/**
+    protected function afterSave()
+    {
+        if ($this->data) {
+            $this->data->task_id = $this->id;
+            if (!$this->data->save()) {
+                HDev::logSaveError($this->data);
+            }
+        }
+        parent::afterSave();
+    }
+
+    /**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Sections the static model class
+	 * @return Task the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
-	}
-
-	public function getLink()
-	{
-		return CHtml::link($this->name, $this->getUrl());
-	}
-
-	public function getUrl()
-	{
-		return '/section/'.$this->id;
 	}
 }

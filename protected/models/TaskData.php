@@ -1,48 +1,29 @@
 <?php
 
 /**
- * This is the model class for table "sections".
+ * This is the model class for table "task_data".
  *
- * The followings are the available columns in table 'sections':
+ * The followings are the available columns in table 'task_data':
  * @property integer $id
- * @property string $name
- * @property integer $active
- * @property string $type
+ * @property integer $task_id
  * @property string $description
- * @property string $color
- * @property integer $page_position
- * @property integer $menu_position
- * @property string $created
+ * @property integer $index_nano_n
+ * @property integer $index_nano_m
+ * @property double $length_link
+ * @property double $indent_radius_inside
+ * @property double $indent_radius_outwards
  *
- * Scopes
- * @method Sections active()
- * @method Sections menuOrdered()
- * @method Sections pageOrdered()
- *
+ * The followings are the available model relations:
+ * @property Task $task
  */
-class Sections extends UActiveRecord
+class TaskData extends UActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'sections';
-	}
-
-	public function scopes()
-	{
-		return array(
-			'active' => array(
-				'condition' => 'active = true'
-			),
-			'menuOrdered' => array(
-				'order' => 'menu_position asc'
-			),
-			'pageOrdered' => array(
-				'order' => 'page_position asc'
-			)
-		);
+		return 'task_data';
 	}
 
 	/**
@@ -53,13 +34,13 @@ class Sections extends UActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, type, description, color', 'required'),
-			array('active, page_position, menu_position', 'numerical', 'integerOnly'=>true),
-			array('name, type, color', 'length', 'max'=>255),
-			array('page_position, menu_position', 'default', 'value' => 0),
+			array('description, index_nano_n, index_nano_m, length_link, indent_radius_inside, indent_radius_outwards', 'required'),
+			array('task_id, index_nano_n, index_nano_m', 'numerical', 'integerOnly'=>true),
+			array('length_link, indent_radius_inside, indent_radius_outwards', 'numerical'),
+			array('description', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, active, type, description, color, page_position, menu_position, created', 'safe', 'on'=>'search'),
+			array('id, task_id, description, index_nano_n, index_nano_m, length_link, indent_radius_inside, indent_radius_outwards', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,6 +52,7 @@ class Sections extends UActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'task' => array(self::BELONGS_TO, 'Task', 'task_id'),
 		);
 	}
 
@@ -81,14 +63,13 @@ class Sections extends UActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Название',
-			'active' => 'Активный',
-			'type' => 'Тип',
-			'description' => 'Краткое описание',
-			'color' => 'Цвет',
-			'page_position' => 'Page Position',
-			'menu_position' => 'Menu Position',
-			'created' => 'Создан',
+			'task_id' => 'Task',
+			'description' => 'Description',
+			'index_nano_n' => 'Index Nano N',
+			'index_nano_m' => 'Index Nano M',
+			'length_link' => 'Length Link',
+			'indent_radius_inside' => 'Indent Radius Inside',
+			'indent_radius_outwards' => 'Indent Radius Outwards',
 		);
 	}
 
@@ -111,14 +92,13 @@ class Sections extends UActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('active',$this->active);
-		$criteria->compare('type',$this->type,true);
+		$criteria->compare('task_id',$this->task_id);
 		$criteria->compare('description',$this->description,true);
-		$criteria->compare('color',$this->color,true);
-		$criteria->compare('page_position',$this->page_position);
-		$criteria->compare('menu_position',$this->menu_position);
-		$criteria->compare('created',$this->created,true);
+		$criteria->compare('index_nano_n',$this->index_nano_n);
+		$criteria->compare('index_nano_m',$this->index_nano_m);
+		$criteria->compare('length_link',$this->length_link);
+		$criteria->compare('indent_radius_inside',$this->indent_radius_inside);
+		$criteria->compare('indent_radius_outwards',$this->indent_radius_outwards);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -129,20 +109,10 @@ class Sections extends UActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Sections the static model class
+	 * @return TaskData the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
-	}
-
-	public function getLink()
-	{
-		return CHtml::link($this->name, $this->getUrl());
-	}
-
-	public function getUrl()
-	{
-		return '/section/'.$this->id;
 	}
 }

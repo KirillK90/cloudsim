@@ -1,8 +1,13 @@
 <?php
-
-class LoginForm extends CFormModel
+/**
+ * Created by PhpStorm.
+ * User: evgeny
+ * Date: 24.05.15
+ * Time: 4:11
+ */
+class TaskForm extends CFormModel
 {
-    
+
     public $email;
     public $password;
 

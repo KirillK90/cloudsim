@@ -57,3 +57,33 @@ class UserRole extends Enum
         );
     }
 }
+
+class TaskType extends Enum
+{
+    const LENYA_TASK = 'lenya_task';
+
+    static function getList()
+    {
+        return array(
+            self::LENYA_TASK => 'Лёнина задача',
+        );
+    }
+}
+
+class TaskStatus extends Enum
+{
+    const NEW_ONE = 'new_one';
+    const WAIT = 'wait';
+    const SUCCESS = 'success';
+    const ERROR = 'error';
+
+    static function getList()
+    {
+        return array(
+            self::NEW_ONE => 'Новая задача',
+            self::WAIT => 'В очереди',
+            self::SUCCESS => 'Выполнено',
+            self::ERROR => 'Ошибка',
+        );
+    }
+}

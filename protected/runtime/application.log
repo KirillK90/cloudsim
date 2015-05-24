@@ -92,3 +92,105 @@ Stack trace:
 REQUEST_URI=/favicon.ico
 ---
 2015/03/29 12:25:05 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchAll(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'cloudsim.tbl_migration' doesn't exist. Выполнявшийся SQL-запрос: SHOW FULL COLUMNS FROM `tbl_migration`.
+2015/05/24 00:39:40 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::execute(): SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PRIMARY KEY,
+	`task_id` INTEGER NOT NULL FOREIGN KEY task(id),
+	`project_name` V' at line 2. Выполнявшийся SQL-запрос: CREATE TABLE `task_data` (
+	`id` PRIMARY KEY,
+	`task_id` INTEGER NOT NULL FOREIGN KEY task(id),
+	`project_name` VARCHAR(64) NOT NULL,
+	`project_description` VARCHAR(255) NOT NULL,
+	`index_nano_n` INTEGER NOT NULL,
+	`index_nano_m` INTEGER NOT NULL,
+	`length_link` FLOAT NOT NULL,
+	`indent_radius_inside` FLOAT NOT NULL,
+	`indent_radius_outwards` FLOAT NOT NULL
+) engine=InnoDB.
+2015/05/24 00:40:56 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::execute(): SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FOREIGN KEY task(id),
+	`project_name` VARCHAR(64) NOT NULL,
+	`project_descriptio' at line 3. Выполнявшийся SQL-запрос: CREATE TABLE `task_data` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`task_id` INTEGER NOT NULL FOREIGN KEY task(id),
+	`project_name` VARCHAR(64) NOT NULL,
+	`project_description` VARCHAR(255) NOT NULL,
+	`index_nano_n` INTEGER NOT NULL,
+	`index_nano_m` INTEGER NOT NULL,
+	`length_link` FLOAT NOT NULL,
+	`indent_radius_inside` FLOAT NOT NULL,
+	`indent_radius_outwards` FLOAT NOT NULL
+) engine=InnoDB.
+2015/05/24 00:41:23 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::execute(): SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fk task(id),
+	`project_name` VARCHAR(64) NOT NULL,
+	`project_description` VARCHA' at line 3. Выполнявшийся SQL-запрос: CREATE TABLE `task_data` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`task_id` INTEGER NOT NULL fk task(id),
+	`project_name` VARCHAR(64) NOT NULL,
+	`project_description` VARCHAR(255) NOT NULL,
+	`index_nano_n` INTEGER NOT NULL,
+	`index_nano_m` INTEGER NOT NULL,
+	`length_link` FLOAT NOT NULL,
+	`indent_radius_inside` FLOAT NOT NULL,
+	`indent_radius_outwards` FLOAT NOT NULL
+) engine=InnoDB.
+2015/05/24 00:43:05 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::execute(): SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fk task(id),
+	`project_name` VARCHAR(32) NOT NULL,
+	`project_description` VARCHA' at line 3. Выполнявшийся SQL-запрос: CREATE TABLE `task_data` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`task_id` INTEGER NOT NULL fk task(id),
+	`project_name` VARCHAR(32) NOT NULL,
+	`project_description` VARCHAR(255) NOT NULL,
+	`index_nano_n` INTEGER NOT NULL,
+	`index_nano_m` INTEGER NOT NULL,
+	`length_link` FLOAT NOT NULL,
+	`indent_radius_inside` FLOAT NOT NULL,
+	`indent_radius_outwards` FLOAT NOT NULL
+) engine=InnoDB.
+2015/05/24 00:52:56 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::execute(): SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fk INTEGER NOT NULL,
+	`project_name` VARCHAR(32) NOT NULL,
+	`project_description' at line 3. Выполнявшийся SQL-запрос: CREATE TABLE `task_data` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`task_id` fk INTEGER NOT NULL,
+	`project_name` VARCHAR(32) NOT NULL,
+	`project_description` VARCHAR(255) NOT NULL,
+	`index_nano_n` INTEGER NOT NULL,
+	`index_nano_m` INTEGER NOT NULL,
+	`length_link` FLOAT NOT NULL,
+	`indent_radius_inside` FLOAT NOT NULL,
+	`indent_radius_outwards` FLOAT NOT NULL
+) engine=InnoDB.
+2015/05/24 00:53:16 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::execute(): SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fk,
+	`project_name` VARCHAR(32) NOT NULL,
+	`project_description` VARCHAR(255) NO' at line 3. Выполнявшийся SQL-запрос: CREATE TABLE `task_data` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`task_id` fk,
+	`project_name` VARCHAR(32) NOT NULL,
+	`project_description` VARCHAR(255) NOT NULL,
+	`index_nano_n` INTEGER NOT NULL,
+	`index_nano_m` INTEGER NOT NULL,
+	`length_link` FLOAT NOT NULL,
+	`indent_radius_inside` FLOAT NOT NULL,
+	`indent_radius_outwards` FLOAT NOT NULL
+) engine=InnoDB.
+2015/05/24 00:54:10 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::execute(): SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fk int(11),
+	`project_name` VARCHAR(32) NOT NULL,
+	`project_description` VARCHAR' at line 3. Выполнявшийся SQL-запрос: CREATE TABLE `task_data` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`task_id` fk int(11),
+	`project_name` VARCHAR(32) NOT NULL,
+	`project_description` VARCHAR(255) NOT NULL,
+	`index_nano_n` INTEGER NOT NULL,
+	`index_nano_m` INTEGER NOT NULL,
+	`length_link` FLOAT NOT NULL,
+	`indent_radius_inside` FLOAT NOT NULL,
+	`indent_radius_outwards` FLOAT NOT NULL
+) engine=InnoDB.
+2015/05/24 11:22:36 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::execute(): SQLSTATE[HY000]: General error: 1025 Error on rename of './cloudsim/task_data' to './cloudsim/#sql2-54c-112' (errno: 152). Выполнявшийся SQL-запрос: ALTER TABLE `task_data` DROP FOREIGN KEY `task_data_task_id_fkey`.
+2015/05/24 11:23:38 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::execute(): SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '
+	`created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) engine=InnoDB' at line 6. Выполнявшийся SQL-запрос: CREATE TABLE `task` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`users_id` int(11) NOT NULL,
+	`name` varchar(255) NOT NULL,
+	`type` varchar(255) NOT NULL,
+	`status` varchar(255) NOT NULL DEFAULT ,
+	`created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) engine=InnoDB.

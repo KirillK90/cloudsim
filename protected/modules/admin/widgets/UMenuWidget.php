@@ -42,6 +42,7 @@ class UMenuWidget extends CWidget
                 'class' => 'bootstrap.widgets.TbNav',
                 'items' => array(
                     array('label' => 'Пользователи', 'icon' => TbHtml::ICON_USER, 'url' => array('/admin/users')),
+                    //array('label' => 'Задачи', 'icon' => TbHtml::ICON_PLUS, 'url' => array('/admin/task')),
                 ),
                 'htmlOptions' => array(
                     'class' => 'pull-left',
