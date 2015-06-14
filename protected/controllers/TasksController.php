@@ -39,7 +39,7 @@ class TasksController extends UController
 
             if($model->data->validate() && $model->save()) {
                 $this->setFlash('success', ACTION_CREATE_SUCCESS);
-                $this->redirect(array('index'));
+                $this->redirect(array('update', 'id' => $model->id));
             } else {
                 $this->setFlash('error', ACTION_VALIDATE_ERROR);
                 HDev::log($model->getErrors());
@@ -54,7 +54,7 @@ class TasksController extends UController
             $this->pageTitle
         );
 
-        $this->render('create', compact('model'));
+        $this->render('tabs', compact('model'));
     }
 
     public function actionUpdate($id)
@@ -63,15 +63,20 @@ class TasksController extends UController
 
         $this->performAjaxValidation($model);
 
-        if ($model->getFormData()) {
+        if ($model->getFormData() || $model->data->getFormData()) {
             $model->attributes = $model->getFormData();
+            $model->data->attributes = $model->data->getFormData();
 
-            if($model->save()) {
+            $model->type = TaskType::LENYA_TASK;
+            $model->status = TaskStatus::NEW_ONE;
+            $model->users_id = $this->getUser()->id;
+
+            if($model->data->validate() && $model->save()) {
                 $this->setFlash('success', ACTION_CREATE_SUCCESS);
-                $this->redirect(array('index'));
             } else {
                 $this->setFlash('error', ACTION_VALIDATE_ERROR);
                 HDev::log($model->getErrors());
+                HDev::log($model->data->getErrors());
             }
         }
 
@@ -82,32 +87,20 @@ class TasksController extends UController
             $this->pageTitle
         );
 
-        $this->render('form', compact('model'));
+        $this->render('tabs', compact('model'));
     }
-	// Uncomment the following methods and override them if needed
-	/*
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
 
-	public function actions()
-	{
-		// return external action classes, e.g.:
-		return array(
-			'action1'=>'path.to.ActionClass',
-			'action2'=>array(
-				'class'=>'path.to.AnotherActionClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-	*/
+    /**
+     * @param $id
+     * @return Task
+     * @throws CHttpException
+     */
+    protected function loadModel($id)
+    {
+        $model = Task::model()->findByPk($id);
+        if (!$model)
+            throw new CHttpException(404, 'Задача не найдена');
+
+        return $model;
+    }
 }

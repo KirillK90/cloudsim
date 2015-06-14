@@ -24,6 +24,21 @@ class m150523_190433_task extends CDbMigration
             'length_link' =>  'FLOAT NOT NULL',
             'indent_radius_inside' => 'FLOAT NOT NULL',
             'indent_radius_outwards' => 'FLOAT NOT NULL',
+            'nuclear_charge'=> 'INTEGER NOT NULL',
+            'valence_electrons'=> 'INTEGER NOT NULL',
+            's_orbital'=> 'FLOAT NOT NULL',
+            'p_orbital'=> 'FLOAT NOT NULL',
+            'd_orbital'=> 'FLOAT NOT NULL',
+            'f_orbital'=> 'FLOAT NOT NULL',
+            'g_orbital'=> 'FLOAT NOT NULL',
+            'auto_calculate'=> 'BOOLEAN NOT NULL',
+            'max_energy'=> 'INTEGER NOT NULL',
+            'accuracy_calculation'=> 'FLOAT NOT NULL',
+            'number_points'=> 'INTEGER NOT NULL',
+            'calculation_zone' => 'BOOLEAN NOT NULL',
+            'max_energy_graph'=> 'INTEGER NOT NULL',
+            'min_energy_graph'=> 'INTEGER NOT NULL',
+            'time_calculation'=> 'INTEGER NOT NULL',
 
         ), 'engine=InnoDB');
 

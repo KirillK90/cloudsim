@@ -194,3 +194,4 @@ REQUEST_URI=/favicon.ico
 	`status` varchar(255) NOT NULL DEFAULT ,
 	`created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) engine=InnoDB.
+2015/06/07 11:34:40 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchAll(): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'cloudsim.tbl_migration' doesn't exist. Выполнявшийся SQL-запрос: SHOW FULL COLUMNS FROM `tbl_migration`.

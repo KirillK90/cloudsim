@@ -6,6 +6,7 @@
  */
 
 echo $form->textFieldControlGroup($model->data, 'nuclear_charge');
+echo $form->textFieldControlGroup($model->data, 'nuclear_charge');
 echo $form->textFieldControlGroup($model->data, 'valence_electrons');
 echo $form->textFieldControlGroup($model->data, 's_orbital');
 echo $form->textFieldControlGroup($model->data, 'p_orbital');
