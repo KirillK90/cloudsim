@@ -51,19 +51,8 @@ $this->widget('TbGridView', array(
         ),
         array(
             'class' => 'bootstrap.widgets.TbButtonColumn',
-            'template' => '{update} {delete}',
-            'buttons' => array(
-                'login' => array(
-                    //'label'=>'Авторизоваться',     // text label of the button
-                    'buttonType'=>'ajaxLink',
-                    'type'=>'primary',
-                    //'icon'=>'user',
-                    'url'=> function(Task $data) {
-                           // return array('/users/login/'.$data->id); //???
-                        }
-
-                )
-            )
+            'template' => '{update} {delete} {view}',
+            'viewButtonUrl'=> 'Yii::app()->controller->createUrl("result",array("id"=>$data->primaryKey))'
         ),
     ),
 ));

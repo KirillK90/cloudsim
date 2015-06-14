@@ -89,6 +89,15 @@ class TasksController extends UController
 
         $this->render('tabs', compact('model'));
     }
+    public function actionResult($id){
+
+        $model = $this->loadModel($id);
+
+        $this->pageTitle='График квантово-механического рассчета зонной структуры углеродной нанотрубки';
+        $this->breadcrumbs = array($this->pageTitle);
+
+        $this->render('result', compact('model'));
+    }
 
     /**
      * @param $id
@@ -104,3 +113,4 @@ class TasksController extends UController
         return $model;
     }
 }
+
