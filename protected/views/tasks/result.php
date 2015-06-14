@@ -6,20 +6,48 @@ $filePath = DATA_PATH.'tasks/'.$model->id.'.json';
 
 $json = file_get_contents($filePath);
 $data = json_decode($json, true);
-HDev::log($data);
+
+$xCnt = count($data['x']);
+$yCnt = count($data['y'][0][0]);
+$maxX = $data['x'][$xCnt - 1];
+$step = $maxX / $xCnt;
+
+$colors = ['red', 'orange', 'yellow', 'green', 'lightblue', 'blue', 'purple'];
+
+$n = 0;
+$config = [];
+foreach($data['y'] as $l => $values) {
+    $offset = $l*$yCnt;
+    foreach($values[0] as $line => $value) {
+        $config[$offset + $line]['name'] = "Фаза L=$l";
+        $config[$offset + $line]['pointInterval'] = $step;
+        $config[$offset + $line]['color'] = $colors[$l];
+        $config[$offset + $line]['id'] = $offset + $line;
+        if ($line) {
+            $config[$offset + $line]['linkedTo'] = ':previous';
+        }
+    }
+    foreach($values as $x => $vector) {
+        foreach($vector as $line => $value) {
+            $config[$offset + $line]['data'][] = $value;
+        }
+    }
+}
 
 $this ->Widget('ext.highcharts.HighchartsWidget', array(
+    'htmlOptions' => ['style' => 'height: 1000px;'],
     'options' => array(
-        'title'=> array(
-            'text' => 'Monthly Average Temperature',
-            'x'=> -20
+        'chart' => array(
+            'zoomType' => 'x'
         ),
-        'subtitle'=> array(
-            'text'=> 'Source: WorldClimate.com',
-            'x' => -20
+        'title'=> array(
+            'text' => 'Диаграмма зонной структуры',
+            'x'=> -20,
         ),
         'xAxis' => array(
-            'categories'=> array()
+            'type' => 'linear',
+            'min' => 0,
+            'minPadding' => 0.1
         ),
         'yAxis' => array(
             'title' => array(
@@ -35,9 +63,23 @@ $this ->Widget('ext.highcharts.HighchartsWidget', array(
             'verticalAlign' => 'middle',
             'borderWidth' => 0
         ),
+        'plotOptions' => array(
+            'series' => array(
+                'marker' => array(
+                    'enabled'=>false
+                ),
+                'states' => array(
+                    'hover' => array(
+                        'halo' => array(
+                            'size' => 1,
+                        ),
+                    )
+                )
+            )
+        ),
 
 
-        'series' => array(
+        'series' => $config/*array(
             array(
                 'name' => 'l=0',
                 'data' => array(7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6)
@@ -50,7 +92,7 @@ $this ->Widget('ext.highcharts.HighchartsWidget', array(
             ),array('name' => 'London',
                 'data' => array(3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8)
             )
-        )
+        )*/
 
     )
 ));
