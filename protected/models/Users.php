@@ -98,9 +98,6 @@ class Users extends UActiveRecord
 		if ($this->isAttributeSafe('password'))
 			$this->password = UserHelper::hash($this->password);
 
-        if ($this->isNewRecord) {
-            $this->activation_key = md5(rand(1000000, 9999999));
-        }
 		return parent::beforeSave();
 	}
 
